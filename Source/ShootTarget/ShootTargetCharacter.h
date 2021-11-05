@@ -19,6 +19,26 @@ class AShootTargetCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+public:
+    AShootTargetCharacter();
+    
+    /** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+    float BaseTurnRate;
+    
+    /** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+    float BaseLookUpRate;
+    
+    /** Gun muzzle's offset from the characters location */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
+    FVector GunOffset;
+    
+    /** Projectile class to spawn */
+    UPROPERTY(EditDefaultsOnly, Category=Projectile)
+    TSubclassOf<class AShootTargetProjectile> ProjectileClass;
+
+
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
 	USkeletalMeshComponent* Mesh1P;
@@ -51,28 +71,17 @@ class AShootTargetCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UMotionControllerComponent* L_MotionController;
 
-public:
-	AShootTargetCharacter();
-
 protected:
 	virtual void BeginPlay();
 
 public:
-	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-	float BaseTurnRate;
 
-	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-	float BaseLookUpRate;
 
-	/** Gun muzzle's offset from the characters location */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
-	FVector GunOffset;
+	
 
-	/** Projectile class to spawn */
-	UPROPERTY(EditDefaultsOnly, Category=Projectile)
-	TSubclassOf<class AShootTargetProjectile> ProjectileClass;
+	
+
+	
 
 	/** Sound to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)

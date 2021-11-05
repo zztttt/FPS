@@ -85,6 +85,12 @@ public:
 	/** Whether to use motion controller location for aiming. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	uint8 bUsingMotionControllers : 1;
+	
+// 	UPROPERTY(BlueprintReadWrite)
+// 	int fireCount;
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void fireCountPlus();
 
 protected:
 	

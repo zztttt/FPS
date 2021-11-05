@@ -19,6 +19,7 @@ DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
 AShootTargetCharacter::AShootTargetCharacter()
 {
+//     fireCount = 0;
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
 
@@ -140,6 +141,7 @@ void AShootTargetCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 
 void AShootTargetCharacter::OnFire()
 {
+    fireCountPlus();
 	// try and fire a projectile
 	if (ProjectileClass != nullptr)
 	{
